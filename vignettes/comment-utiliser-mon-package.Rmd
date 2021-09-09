@@ -1,0 +1,33 @@
+---
+title: "comment-utiliser-mon-package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{comment-utiliser-mon-package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+-Fonction test : fonction permettant de tester la création de vignette et la bonne utilisation des dépendances. 
+
+```{r setup}
+library(maturitymodelling)
+
+#' Title
+#'
+#' @param param 
+#'
+#' @return
+#' @export
+#' @import magrittr
+#' @examples
+test<-function(){
+  print("Hello world")
+}
+```

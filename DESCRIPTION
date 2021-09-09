@@ -1,0 +1,19 @@
+Package: maturitymodelling
+Title: Forest maturity modelling
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Etienne",
+           family = "Lalechère",
+           role = c("aut", "cre"),
+           email = "lalechereetienne@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-8920-731X"))
+Description: Functions for forest maturity modelling.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
