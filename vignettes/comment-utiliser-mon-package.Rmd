@@ -17,8 +17,6 @@ knitr::opts_chunk$set(
 -Fonction test : fonction permettant de tester la création de vignette et la bonne utilisation des dépendances. 
 
 ```{r setup}
-library(maturitymodelling)
-
 #' Title
 #'
 #' @param param 
