@@ -1,0 +1,32 @@
+---
+title: "Package_description"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{package_description}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(maturitymodelling)
+```
+
+__loadCleanData()__ 
+
+Load and clean data used in Fuhr et al. (in prep.); private data access.
+
+Function to load and clean data: select maturity, LiDAR and topographic variables and normalize intensity metrics.
+
+```{r setup}
+# terrain=loadCleanData()[[1]]
+# metric=loadCleanData()[[2]]
+```
+
+
+
+
