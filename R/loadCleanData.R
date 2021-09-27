@@ -1,7 +1,7 @@
 #' @title Load and clean data used in Fuhr et al. (in prep.); private data access.
 #' @description Function to load and clean data: select maturity, LiDAR and topographic variables and normalize intensity metrics.
 #' @usage loadCleanData()
-#' @param deleteGTGBna
+#' @param deleteGTGBna logical.
 #' @return Return LiDAR metric and terrain releve data frames
 #' @export
 #' @importFrom BBmisc normalize

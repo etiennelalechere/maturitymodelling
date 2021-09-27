@@ -6,6 +6,9 @@
 \usage{
 loadCleanData()
 }
+\arguments{
+\item{deleteGTGBna}{logical.}
+}
 \value{
 Return LiDAR metric and terrain releve data frames
 }

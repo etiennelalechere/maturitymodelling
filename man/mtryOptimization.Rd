@@ -14,7 +14,7 @@ mtryOptimization(Y,X,nrep,...)
 \item{nrep}{number of iteration.}
 }
 \value{
-Plot the mtry value that minimize the out-of-bag error rates
+Plot the mtry value that minimize the mean out-of-bag error rate.
 }
 \description{
 Function to define mtry random forest parameter.
