@@ -1,12 +1,12 @@
 #' @title Load and clean data used in Fuhr et al. (in prep.); private data access.
 #' @description Function to load and clean data: select maturity, LiDAR and topographic variables and normalize intensity metrics.
 #' @usage loadCleanData()
-#' @param
+#' @param deleteGTGBna
 #' @return Return LiDAR metric and terrain releve data frames
 #' @export
 #' @importFrom BBmisc normalize
-#' @examples
-loadCleanData<-function(){
+#' @examples terrain=loadCleanData(deleteGTGBna = F)[[1]]; metric=loadCleanData(deleteGTGBna = F)[[2]]
+loadCleanData<-function(deleteGTGBna){
 
   ### Load files
   terrain=read.delim("./../data/Amelioration_modeles/Points_mat_metrics_prealps_IFN_20200214_final.csv",sep=";",h=T)
@@ -110,6 +110,23 @@ loadCleanData<-function(){
   # Select terrain columns
   colnames(terrain)
   terrain=terrain[,c(1:22)]
+
+  # Remove treemeanC correlated with tree.densi (-0.92)
+  dim(metric) # 15
+  colnames(metric)
+  metric=metric[,-c(which(colnames(metric)=="Tree.meanC"))] # 0.85 threshold
+  colnames(metric)
+
+  # Define colnames
+  xlabs=  c( "Zmax","Zmean","Zsd","Zkurt","Imean","Isd","Tree.meanH","Tree.sdH","Tree.giniH","Tree.density","TreeSup30.density","Tree.Canopy_cover","Elevation","Slope"  )
+  colnames(metric)=xlabs
+
+  # Delete NA value
+  if(deleteGTGBna==T){
+    delete.rows=which(is.na(terrain$GTGB)==T)
+    terrain=terrain[-delete.rows,]
+    metric=metric[-delete.rows,]
+  }
 
   return(list(terrain,metric))
 }
