@@ -2,4 +2,6 @@
 
 export(computeIMAT)
 export(loadCleanData)
+export(mtryOptimization)
+import(randomForest)
 importFrom(BBmisc,normalize)
