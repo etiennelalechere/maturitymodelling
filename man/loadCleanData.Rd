@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadCleanData.R
 \name{loadCleanData}
 \alias{loadCleanData}
-\title{Load and clean data used in Fuhr et al. (in prep.); private data access.}
+\title{Load and clean data used in Fuhr et al. (in prep.).}
 \usage{
 loadCleanData()
 }

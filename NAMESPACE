@@ -3,6 +3,7 @@
 export(bootstrapCV)
 export(computeIMAT)
 export(loadCleanData)
+export(loadCompleteCleanData)
 export(mtryOptimization)
 import(randomForest)
 importFrom(BBmisc,normalize)

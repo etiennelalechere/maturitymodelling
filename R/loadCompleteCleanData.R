@@ -1,12 +1,12 @@
-#' @title Load and clean data used in Fuhr et al. (in prep.).
-#' @description Function to load and clean data: select maturity, LiDAR and topographic variables and normalize intensity metrics.
-#' @usage loadCleanData()
+#' @title Load and clean a dataset with all variables that were tested to model maturity.
+#' @description Function to load and clean data: select maturity, LiDAR and topographic variables and normalize intensity metrics. Parcel area and distance to nearest road or forest track are also included, such as LiDAR flight and observed stand type.
+#' @usage loadCompleteCleanData()
 #' @param deleteGTGBna logical.
 #' @return Return LiDAR metric and terrain releve data frames
 #' @export
 #' @importFrom BBmisc normalize
-#' @examples terrain=loadCleanData(deleteGTGBna = F)[[1]]; metric=loadCleanData(deleteGTGBna = F)[[2]]
-loadCleanData<-function(deleteGTGBna){
+#' @examples terrain=loadCompleteCleanData(deleteGTGBna = F)[[1]]; metric=loadCompleteCleanData(deleteGTGBna = F)[[2]]
+loadCompleteCleanData<-function(deleteGTGBna){
 
   ### Load files
   terrain=read.delim("./../data/Modeles_maturite/Points_mat_metrics_prealps_IFN_20200214_final.csv",sep=";",h=T)
@@ -14,7 +14,7 @@ loadCleanData<-function(deleteGTGBna){
   metric=read.delim("./../data/Modeles_maturite/Points_mat_metrics_prealps_IFN_20200214_final.csv",sep=";",h=T)
   mnt=read.table("./../data/Modeles_maturite/mntPts_complet.csv",sep=";")
   slope=read.table("./../data/Modeles_maturite/slopePts_complet.csv",sep=";")
-  # parcelles=read.table("./data/placette_jmm_parcellaire.csv",sep=";",h=T)
+  parcelles=read.table("./../data/Modeles_maturite/placette_jmm_parcellaire.csv",sep=";",h=T)
 
 
   ### Clean data keeping 'Source' column
@@ -22,7 +22,7 @@ loadCleanData<-function(deleteGTGBna){
   # Order rows
   terrain=terrain[order(as.character(terrain$Placette)),]
   metric=metric[order(as.character(metric$Placette)),]
-  # parcelles=parcelles[order(as.character(parcelles$placette)),]
+  parcelles=parcelles[order(as.character(parcelles$placette)),]
 
   # deleted duplicated rows
   doublons=c(
@@ -35,11 +35,12 @@ loadCleanData<-function(deleteGTGBna){
   terrain=terrain[-doublons,]
   metric=metric[-doublons,]
 
+
   # Add area  (or a random column)
-  # metric=cbind(metric,parcelles$area)
-  # colnames(metric)[length(colnames(metric))]="Area.parc"
-  # colnames(metric)
-  metric=cbind(metric,metric[,1])
+  metric=cbind(metric,parcelles$area)
+  colnames(metric)[length(colnames(metric))]="Area.parc"
+  colnames(metric)
+  # metric=cbind(metric,metric[,1])
 
   # Select metrics
   # colnames(metric)
@@ -57,26 +58,26 @@ loadCleanData<-function(deleteGTGBna){
   # colnames(metric)
   metric=metric[,-c(11)]
   # Delete "Type_PEUP" et "Source"
-  dim(metric)
-  colnames(metric)
-  metric=metric[,-c(14:15)]
+  # dim(metric)
+  # colnames(metric)
+  # metric=metric[,-c(14:15)]
 
   # Add distance to nearest road
-  # nn=read.delim("./data/Proche_ancien.csv",sep=";")
-  # dim(nn)
-  # doublons=c(
-  #   which(as.character(nn$trrn_Pl)=="Protest_146")[2],
-  #   which(as.character(nn$trrn_Pl)=="LPO_7")[2],
-  #   which(as.character(nn$trrn_Pl)=="RBI_V_350")[2],
-  #   which(as.character(nn$trrn_Pl)=="Protest_161")[2],
-  #   which(as.character(nn$trrn_Pl)=="Protest_91")[2]
-  # )
-  # doublons
-  # nn=nn[order(as.character(nn$trrn_Pl)),]
-  # nn=nn[-doublons,]
-  # metric=cbind(metric,nn[,c(3)])
-  # colnames(metric)[length(colnames(metric))]="near_dist"
-  # colnames(metric)
+  nn=read.delim("./../data/Modeles_maturite/Proche_ancien.csv",sep=";")
+  dim(nn)
+  doublons=c(
+    which(as.character(nn$trrn_Pl)=="Protest_146")[2],
+    which(as.character(nn$trrn_Pl)=="LPO_7")[2],
+    which(as.character(nn$trrn_Pl)=="RBI_V_350")[2],
+    which(as.character(nn$trrn_Pl)=="Protest_161")[2],
+    which(as.character(nn$trrn_Pl)=="Protest_91")[2]
+  )
+  doublons
+  nn=nn[order(as.character(nn$trrn_Pl)),]
+  nn=nn[-doublons,]
+  metric=cbind(metric,nn[,c(3)])
+  colnames(metric)[length(colnames(metric))]="near_dist"
+  colnames(metric)
 
   # Add terrain variables
   mnt=mnt[order(mnt[,1]),]
@@ -104,8 +105,8 @@ loadCleanData<-function(deleteGTGBna){
   # boxplot(metric$isd)
 
   # Delete area variable (or random variable)
-  colnames(metric)
-  metric=metric[,-which(colnames(metric)=="metric[, 1]")]
+  # colnames(metric)
+  # metric=metric[,-which(colnames(metric)=="metric[, 1]")]
 
   # Select terrain columns
   colnames(terrain)
@@ -118,7 +119,7 @@ loadCleanData<-function(deleteGTGBna){
   colnames(metric)
 
   # Define colnames
-  xlabs=  c( "Zmax","Zmean","Zsd","Zkurt","Imean","Isd","Tree.meanH","Tree.sdH","Tree.giniH","Tree.density","TreeSup30.density","Tree.Canopy_cover","Elevation","Slope"  )
+  xlabs=  c( "Zmax","Zmean","Zsd","Zkurt","Imean","Isd","Tree.meanH","Tree.sdH","Tree.giniH","Tree.density","TreeSup30.density","Tree.Canopy_cover","Field.stand_type","LiDAR.flight","Parcel.area","Nearest.road_distance","Elevation","Slope"  )
   colnames(metric)=xlabs
 
   # Delete NA value
