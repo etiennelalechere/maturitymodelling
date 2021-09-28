@@ -34,7 +34,7 @@ computeIMAT<-function(useGTTGB,diameter,quant){
   ) / 3
 
   maturityIndices=data.frame(IMAT,GTTGB,GBMD,VBMS)
-  if(useGTTGB==T){
+  if(useGTTGB==F){
     colnames(maturityIndices)[2]="GTGBGTTGB"
   }
 
