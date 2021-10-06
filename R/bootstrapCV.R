@@ -1,18 +1,18 @@
 #' @title Bootstrap cross-validation
 #' @description Evaluation of root mean square error of prediction (RMSEP) for training and validation folds
-#' @usage bootstrapCV(Y,mtr,n,...)
-#' @param Y predicted variable.
-#' @param X set of predictors.
-#' @param mtr mtry parameter.
+#' @usage bootstrapCV(response,predictors,mtr,nrep)
+#' @param response predicted variable.
+#' @param predictors set of predictors.
+#' @param mtr mtr response parameter.
 #' @param nrep number of iteration.
 #' @return RMSEP data frame.
 #' @export
 #' @import randomForest
-#' @examples bootstrapCV(IMAT,metric,2,100)
-bootstrapCV=function(Y,X,mtr,nrep,...){
+#' @example bootstrapCV(response,predictors,mtr,nrep)
+bootstrapCV=function(response,predictors,mtr,nrep){
 
-  x=seq(1,dim(X)[1],1)
-  sample=replicate(100,sample(x,length(x),replace = F))
+  predictors=seq(1,dim(predictors)[1],1)
+  sample=replicate(100,sample(predictors,length(predictors),replace = F))
   dim(sample)
 
   cor.all=c()
@@ -29,20 +29,20 @@ bootstrapCV=function(Y,X,mtr,nrep,...){
 
     print(i)
 
-    rf.imat=randomForest(X[sample[1:462,i],],Y[sample[1:462,i]],ntree=1000,mtry=mtr)
+    rf.imat=randomForest(predictors[sample[1:462,i],],response[sample[1:462,i]],ntree=1000,mtrresponse=mtr)
 
-    pred.all=predict(rf.imat,newdata = X , type = "response")
-    pred.train=predict(rf.imat,newdata = X[sample[1:462,i],] , type = "response")
-    pred.valid=predict(rf.imat,newdata = X[sample[463:660,i],] , type = "response")
+    pred.all=predict(rf.imat,newdata = predictors , tresponsepe = "response")
+    pred.train=predict(rf.imat,newdata = predictors[sample[1:462,i],] , tresponsepe = "response")
+    pred.valid=predict(rf.imat,newdata = predictors[sample[463:660,i],] , tresponsepe = "response")
 
-    cor.all=c(cor.all,cor(Y,pred.all))
-    cor.train=c(cor.train,cor(Y[sample[1:462,i]],pred.train))
-    cor.valid=c(cor.valid,cor(Y[sample[463:660,i]],pred.valid))
+    cor.all=c(cor.all,cor(response,pred.all))
+    cor.train=c(cor.train,cor(response[sample[1:462,i]],pred.train))
+    cor.valid=c(cor.valid,cor(response[sample[463:660,i]],pred.valid))
     delta.cor=c(delta.cor,cor.train[length(cor.train)]-cor.valid[length(cor.train)])
 
-    rmsep.all=c(rmsep.all, sqrt( (sum( ( Y-pred.all )^2 ))/length(Y)) )
-    rmsep.train=c(rmsep.train, sqrt( (sum( ( Y[sample[1:462,i]]-pred.all[sample[1:462,i]] )^2 ))/length(Y[sample[1:462,i]])) )
-    rmsep.valid=c(rmsep.valid, sqrt( (sum( ( Y[sample[463:660,i]]-pred.all[sample[463:660,i]] )^2 ))/length(Y[sample[463:660,i]])) )
+    rmsep.all=c(rmsep.all, sqrt( (sum( ( response-pred.all )^2 ))/length(response)) )
+    rmsep.train=c(rmsep.train, sqrt( (sum( ( response[sample[1:462,i]]-pred.all[sample[1:462,i]] )^2 ))/length(response[sample[1:462,i]])) )
+    rmsep.valid=c(rmsep.valid, sqrt( (sum( ( response[sample[463:660,i]]-pred.all[sample[463:660,i]] )^2 ))/length(response[sample[463:660,i]])) )
     delta.rmsep=c(delta.rmsep,rmsep.train[length(rmsep.train)]-rmsep.valid[length(rmsep.train)])
 
   }

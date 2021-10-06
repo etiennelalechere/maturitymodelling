@@ -17,3 +17,8 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    BBmisc,
+    randomForest
+Depends: 
+    R (>= 2.10)

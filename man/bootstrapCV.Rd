@@ -4,14 +4,14 @@
 \alias{bootstrapCV}
 \title{Bootstrap cross-validation}
 \usage{
-bootstrapCV(Y,mtr,n,...)
+bootstrapCV(response,predictors,mtr,nrep)
 }
 \arguments{
-\item{Y}{predicted variable.}
+\item{response}{predicted variable.}
 
-\item{X}{set of predictors.}
+\item{predictors}{set of predictors.}
 
-\item{mtr}{mtry parameter.}
+\item{mtr}{mtr response parameter.}
 
 \item{nrep}{number of iteration.}
 }
@@ -20,7 +20,4 @@ RMSEP data frame.
 }
 \description{
 Evaluation of root mean square error of prediction (RMSEP) for training and validation folds
-}
-\examples{
-bootstrapCV(IMAT,metric,2,100)
 }

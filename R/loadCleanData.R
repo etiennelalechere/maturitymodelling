@@ -5,7 +5,8 @@
 #' @return Return LiDAR metric and terrain releve data frames
 #' @export
 #' @importFrom BBmisc normalize
-#' @examples terrain=loadCleanData(deleteGTGBna = F)[[1]]; metric=loadCleanData(deleteGTGBna = F)[[2]]
+#' @examples terrain=loadCleanData(deleteGTGBna = FALSE)[[1]]
+#' metric=loadCleanData(deleteGTGBna = FALSE)[[2]]
 loadCleanData<-function(deleteGTGBna){
 
   ### Load files

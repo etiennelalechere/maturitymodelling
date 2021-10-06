@@ -4,10 +4,12 @@
 \alias{computeIMAT}
 \title{Compute maturity indices}
 \usage{
-computeIMAT(useGTTGB,diameter,quant)
+computeIMAT(useGTTGB,maturityAttributeData,diameter,quant)
 }
 \arguments{
 \item{useGTTGB}{logical, use GTGBGTTGB if set to false.}
+
+\item{maturityAttributeData}{dataframe including maturity attributes, colnames must be "GTTGB", "GTGBTTGB", "GBMD20", "VBMS20", "GBMD30" or "VBMS30"}
 
 \item{diameter}{20cm or 30cm threshold for standing and lying deadwood.}
 
@@ -20,5 +22,5 @@ Return maturity index and attributes.
 Compute the maturity index described in Furh et al. (in prep.) and maturity attributes (living tree basal area, standing deadwood basal area, lying deadwood volume).
 }
 \examples{
-computeIMAT(useGTTGB=T,diameter=30,quant=0.99)
+computeIMAT(useGTTGB=TRUE,maturityAttributeData="terrain",diameter=30,quant=0.99)
 }

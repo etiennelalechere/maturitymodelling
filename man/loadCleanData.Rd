@@ -16,5 +16,6 @@ Return LiDAR metric and terrain releve data frames
 Function to load and clean data: select maturity, LiDAR and topographic variables and normalize intensity metrics.
 }
 \examples{
-terrain=loadCleanData(deleteGTGBna = F)[[1]]; metric=loadCleanData(deleteGTGBna = F)[[2]]
+terrain=loadCleanData(deleteGTGBna = FALSE)[[1]]
+metric=loadCleanData(deleteGTGBna = FALSE)[[2]]
 }
