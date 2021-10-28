@@ -11,8 +11,8 @@
 #' @example bootstrapCV(response,predictors,mtr,nrep)
 bootstrapCV=function(response,predictors,mtr,nrep){
 
-  predictors=seq(1,dim(predictors)[1],1)
-  samples=replicate(100,sample(predictors,length(predictors),replace = F))
+  seq.id=seq(1,dim(predictors)[1],1)
+  samples=replicate(100,sample(seq.id,length(seq.id),replace = F))
   dim(sample)
 
   cor.all=c()
