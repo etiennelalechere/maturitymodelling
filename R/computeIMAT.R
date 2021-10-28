@@ -10,20 +10,28 @@
 #' @examples computeIMAT(useGTTGB=TRUE,maturityAttributeData="terrain",diameter=30,quant=0.99)
 computeIMAT<-function(useGTTGB,maturityAttributeData,diameter,quant){
 
+  maturityIndices=array(NA,dim=c(dim(maturityAttributeData)[1],4))
+
   if(is.null(dim(maturityAttributeData))==F){
 
     if(useGTTGB==T){
         GTTGB=maturityAttributeData[,which(colnames(maturityAttributeData)=="GTTGB")]
+        colnames(maturityIndices)[2]=paste("GTTGB",diameter,".Q",quant,sep="")
     }else{
       GTTGB=maturityAttributeData[,which(colnames(maturityAttributeData)=="GTGBTTGB")]
+      colnames(maturityIndices)[2]=paste("GTGBTTGB",diameter,".Q",quant,sep="")
     }
     if(diameter==20){
       GBMD=maturityAttributeData[,which(colnames(maturityAttributeData)=="GBMD20")]
       VBMS=maturityAttributeData[,which(colnames(maturityAttributeData)=="VBMS20")]
+      colnames(maturityIndices)[3]=paste("GBMD",diameter,".Q",quant,sep="")
+      colnames(maturityIndices)[4]=paste("VBMS",diameter,".Q",quant,sep="")
     }
     if(diameter==30){
       GBMD=maturityAttributeData[,which(colnames(maturityAttributeData)=="GBMD30")]
       VBMS=maturityAttributeData[,which(colnames(maturityAttributeData)=="VBMS30")]
+      colnames(maturityIndices)[3]=paste("GBMD",diameter,".Q",quant,sep="")
+      colnames(maturityIndices)[4]=paste("VBMS",diameter,".Q",quant,sep="")
     }
 
     GTTGB[which(GTTGB>quantile(GTTGB,quant))]=quantile(GTTGB,quant)
@@ -36,10 +44,8 @@ computeIMAT<-function(useGTTGB,maturityAttributeData,diameter,quant){
         VBMS/max(VBMS)
     ) / 3
 
-    maturityIndices=data.frame(IMAT,GTTGB,GBMD,VBMS)
-    if(useGTTGB==F){
-      colnames(maturityIndices)[2]="GTGBGTTGB"
-    }
+    maturityIndices[,1:4]=data.frame(IMAT,GTTGB,GBMD,VBMS)
+
   }else{
     maturityIndices="Invalid maturityAttributeData dataframe."
   }
