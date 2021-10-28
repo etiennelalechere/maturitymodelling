@@ -1,7 +1,7 @@
 #' @title Compute maturity indices
 #' @description Compute the maturity index described in Furh et al. (in prep.) and maturity attributes (living tree basal area, standing deadwood basal area, lying deadwood volume).
 #' @usage computeIMAT(useGTTGB,maturityAttributeData,diameter,quant)
-#' @param useGTTGB logical, use GTGBGTTGB if set to false.
+#' @param useGTTGB logical, function use GTGBGTTGB if set to false.
 #' @param maturityAttributeData dataframe including maturity attributes, colnames must be "GTTGB", "GTGBTTGB", "GBMD20", "VBMS20", "GBMD30" or "VBMS30"
 #' @param diameter 20cm or 30cm threshold for standing and lying deadwood.
 #' @param quant quantile used as a threshold to compute IMAT.
