@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootstrapCV.R
 \name{bootstrapCV}
 \alias{bootstrapCV}
-\title{Bootstrap cross-validation (70\%, 30\%)}
+\title{Bootstrap cross-validation (70\%,30\%)}
 \usage{
 bootstrapCV(response,predictors,mtr,nrep)
 }
