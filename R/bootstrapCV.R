@@ -25,24 +25,26 @@ bootstrapCV=function(response,predictors,mtr,nrep){
   rmsep.valid=c()
   delta.rmsep=c()
 
+  dat70perc=ceiling(70*length(IMAT)/100)
+
   for(i in 1:nrep){
 
     print(i)
 
-    rf.imat=randomForest(predictors[sample[1:462,i],],response[sample[1:462,i]],ntree=1000,mtrresponse=mtr)
+    rf.imat=randomForest(predictors[sample[1:dat70perc,i],],response[sample[1:dat70perc,i]],ntree=1000,mtrresponse=mtr)
 
     pred.all=predict(rf.imat,newdata = predictors , tresponsepe = "response")
-    pred.train=predict(rf.imat,newdata = predictors[sample[1:462,i],] , tresponsepe = "response")
-    pred.valid=predict(rf.imat,newdata = predictors[sample[463:660,i],] , tresponsepe = "response")
+    pred.train=predict(rf.imat,newdata = predictors[sample[1:dat70perc,i],] , tresponsepe = "response")
+    pred.valid=predict(rf.imat,newdata = predictors[sample[(dat70perc+1):length(IMAT),i],] , tresponsepe = "response")
 
     cor.all=c(cor.all,cor(response,pred.all))
-    cor.train=c(cor.train,cor(response[sample[1:462,i]],pred.train))
-    cor.valid=c(cor.valid,cor(response[sample[463:660,i]],pred.valid))
+    cor.train=c(cor.train,cor(response[sample[1:dat70perc,i]],pred.train))
+    cor.valid=c(cor.valid,cor(response[sample[(dat70perc+1):length(IMAT),i]],pred.valid))
     delta.cor=c(delta.cor,cor.train[length(cor.train)]-cor.valid[length(cor.train)])
 
     rmsep.all=c(rmsep.all, sqrt( (sum( ( response-pred.all )^2 ))/length(response)) )
-    rmsep.train=c(rmsep.train, sqrt( (sum( ( response[sample[1:462,i]]-pred.all[sample[1:462,i]] )^2 ))/length(response[sample[1:462,i]])) )
-    rmsep.valid=c(rmsep.valid, sqrt( (sum( ( response[sample[463:660,i]]-pred.all[sample[463:660,i]] )^2 ))/length(response[sample[463:660,i]])) )
+    rmsep.train=c(rmsep.train, sqrt( (sum( ( response[sample[1:dat70perc,i]]-pred.all[sample[1:dat70perc,i]] )^2 ))/length(response[sample[1:dat70perc,i]])) )
+    rmsep.valid=c(rmsep.valid, sqrt( (sum( ( response[sample[(dat70perc+1):length(IMAT),i]]-pred.all[sample[(dat70perc+1):length(IMAT),i]] )^2 ))/length(response[sample[(dat70perc+1):length(IMAT),i]])) )
     delta.rmsep=c(delta.rmsep,rmsep.train[length(rmsep.train)]-rmsep.valid[length(rmsep.train)])
 
   }

@@ -11,7 +11,7 @@
 mtryOptimization<-function(response,predictors,nrep,...){
 
   rf_tuned=tuneRF(predictors, response, ntreeTry=1000, improve=0.05, plot=F, doBest=FALSE)
-  for(i in 1:100){
+  for(i in 1:nrep){
     print(i)
     rf_tuned=cbind(rf_tuned,tuneRF(predictors, response, ntreeTry=1000, improve=0.05, plot=F, doBest=FALSE))
   }
