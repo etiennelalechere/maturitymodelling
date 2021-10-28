@@ -11,6 +11,7 @@
 computeIMAT<-function(useGTTGB,maturityAttributeData,diameter,quant){
 
   maturityIndices=array(NA,dim=c(dim(maturityAttributeData)[1],4))
+  colnames(maturityIndices)=rep("na",4)
 
   if(is.null(dim(maturityAttributeData))==F){
 
@@ -44,7 +45,7 @@ computeIMAT<-function(useGTTGB,maturityAttributeData,diameter,quant){
         VBMS/max(VBMS)
     ) / 3
 
-    maturityIndices[,1:4]=data.frame(IMAT,GTTGB,GBMD,VBMS)
+    maturityIndices[,c(1:4)]=data.frame(IMAT,GTTGB,GBMD,VBMS)
 
   }else{
     maturityIndices="Invalid maturityAttributeData dataframe."
