@@ -45,7 +45,8 @@ computeIMAT<-function(useGTTGB,maturityAttributeData,diameter,quant){
     ) / 3
 
     maturityIndices=cbind(IMAT,GTTGB,GBMD,VBMS)
-    colnames(maturityIndices)=c("IMAT",namecol)
+    colnames(maturityIndices)=namecol
+    colnames(maturityIndices)[1]="IMAT"
 
   }else{
     maturityIndices="Invalid maturityAttributeData dataframe."
