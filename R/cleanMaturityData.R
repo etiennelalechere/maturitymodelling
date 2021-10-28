@@ -59,7 +59,7 @@ cleanMaturityData<-function(terrain,metrics){
 
   # Select variables
   colnames(metrics)
-  metrics.selec=c("Placette","X","Y","zmax","zmean","zsd","zkurt","imean","isd","Tree_meanH","Tree_sdH","Tree_giniH","Tree_density","Tree_density","TreeSup30_density","TreeCanopy_cover_in_plot","altitude","slope_gr")
+  metrics.selec=c("Placette","X","Y","zmax","zmean","zsd","zkurt","imean","isd","Tree_meanH","Tree_sdH","Tree_giniH","Tree_density","TreeSup30_density","TreeCanopy_cover_in_plot","altitude","slope_gr")
   metrics=metrics[,metrics.selec]
   colnames(metrics)= c("Placette","X","Y","Zmax","Zmean","Zsd","Zkurt","Imean","Isd","Tree.meanH","Tree.sdH","Tree.giniH","Tree.density","TreeSup30.density","Tree.Canopy_cover","Elevation","Slope")
   colnames(terrain)
