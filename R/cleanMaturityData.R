@@ -9,7 +9,7 @@
 cleanMaturityData<-function(terrain,metrics){
 
 
-  # Check matching of plot names in the field and the metrics tables
+  # Check matching of plot names in the field and the metric tables
   length(which(terrain$Placette %in% metrics$Placette == T))
   length(which(metrics$Placette %in%  terrain$Placette == T))
   subset(terrain$Placette,subset = terrain$Placette %in% metrics$Placette == F) # no matching for Protest & RBI plots
