@@ -7,7 +7,7 @@
 computeIMAT(useGTTGB,maturityAttributeData,diameter,quant)
 }
 \arguments{
-\item{useGTTGB}{logical, use GTGBGTTGB if set to false.}
+\item{useGTTGB}{logical, function use GTGBGTTGB if set to false.}
 
 \item{maturityAttributeData}{dataframe including maturity attributes, colnames must be "GTTGB", "GTGBTTGB", "GBMD20", "VBMS20", "GBMD30" or "VBMS30"}
 
