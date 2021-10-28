@@ -1,4 +1,4 @@
-#' @title Bootstrap cross-validation (70%, 30%)
+#' @title Bootstrap cross-validation (70%-30%)
 #' @description Evaluation of root mean square error of prediction (RMSEP) for training and validation folds
 #' @usage bootstrapCV(response,predictors,mtr,nrep)
 #' @param response predicted variable.
