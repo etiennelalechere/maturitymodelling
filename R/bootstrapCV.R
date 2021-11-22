@@ -5,11 +5,12 @@
 #' @param predictors set of predictors.
 #' @param mtr mtr response parameter.
 #' @param nrep number of iteration.
+#' @param cor.method character, "spearman" or "pearson"
 #' @return RMSEP data frame.
 #' @export
 #' @import randomForest
 #' @example bootstrapCV(response,predictors,mtr,nrep)
-bootstrapCV=function(response,predictors,mtr,nrep){
+bootstrapCV=function(response,predictors,mtr,nrep,cor.method){
 
   seq.id=seq(1,dim(predictors)[1],1)
   samples=replicate(100,sample(seq.id,length(seq.id),replace = F))
@@ -37,7 +38,7 @@ bootstrapCV=function(response,predictors,mtr,nrep){
     pred.train=predict(rf.imat,newdata = predictors[samples[1:dat70perc,i],] , tresponsepe = "response")
     pred.valid=predict(rf.imat,newdata = predictors[samples[(dat70perc+1):length(IMAT),i],] , tresponsepe = "response")
 
-    cor.all=c(cor.all,cor(response,pred.all))
+    cor.all=c(cor.all,cor(response,pred.all,cor.method))
     cor.train=c(cor.train,cor(response[samples[1:dat70perc,i]],pred.train))
     cor.valid=c(cor.valid,cor(response[samples[(dat70perc+1):length(IMAT),i]],pred.valid))
     delta.cor=c(delta.cor,cor.train[length(cor.train)]-cor.valid[length(cor.train)])

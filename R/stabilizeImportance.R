@@ -8,7 +8,6 @@
 #' @import randomForest
 #' @examples # not run: impt.replicates.ord=maturitymodelling::stabilizeImportance(impt.init,nrep)
 stabilizeImportance=function(impt.init,nrep){
-  nrep=10
   impt.replicates=array(NA,dim=c(nrep,length(impt.init)))
   colnames(impt.replicates)=names(impt.init)
   impt.replicates[1,]=impt.init
