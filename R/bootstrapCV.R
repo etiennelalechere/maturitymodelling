@@ -38,7 +38,7 @@ bootstrapCV=function(response,predictors,mtr,nrep,cor.method){
     pred.train=predict(rf.imat,newdata = predictors[samples[1:dat70perc,i],] , tresponsepe = "response")
     pred.valid=predict(rf.imat,newdata = predictors[samples[(dat70perc+1):length(IMAT),i],] , tresponsepe = "response")
 
-    cor.all=c(cor.all,cor(response,pred.all,cor.method))
+    cor.all=c(cor.all,cor(response,pred.all,method=cor.method))
     cor.train=c(cor.train,cor(response[samples[1:dat70perc,i]],pred.train))
     cor.valid=c(cor.valid,cor(response[samples[(dat70perc+1):length(IMAT),i]],pred.valid))
     delta.cor=c(delta.cor,cor.train[length(cor.train)]-cor.valid[length(cor.train)])
