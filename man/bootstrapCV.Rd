@@ -14,6 +14,8 @@ bootstrapCV(response,predictors,mtr,nrep)
 \item{mtr}{mtr response parameter.}
 
 \item{nrep}{number of iteration.}
+
+\item{cor.method}{character, "spearman" or "pearson"}
 }
 \value{
 RMSEP data frame.
