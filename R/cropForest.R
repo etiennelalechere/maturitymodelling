@@ -3,6 +3,7 @@
 #' @usage cropForest()
 #' @import raster
 #' @import sf
+#' @import dplyr
 #' @export
 #' @examples # not run: cropForest()
 
