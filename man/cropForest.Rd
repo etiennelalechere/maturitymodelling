@@ -4,7 +4,10 @@
 \alias{cropForest}
 \title{Crop forest to lidar survey extents}
 \usage{
-cropForest()
+cropForest(dir)
+}
+\arguments{
+\item{dir}{character, directory name to load BD FORET layers}
 }
 \description{
 Crop forest to lidar survey extents and dissolve using "CODE_TFV" attribute

@@ -1,13 +1,20 @@
 #' @title Crop forest to lidar survey extents
 #' @description Crop forest to lidar survey extents and dissolve using "CODE_TFV" attribute
-#' @usage cropForest()
+#' @usage cropForest(dir)
+#' @param dir character, directory name to load BD FORET layers
 #' @import raster
 #' @import sf
 #' @import dplyr
 #' @export
 #' @examples # not run: cropForest()
 
-cropForest<-function(){
+cropForest<-function(dir){
+
+  foret38=sf::st_read(paste(dir2,"/38/FORMATION_VEGETALE.shp",sep=""), options = "ENCODING=WINDOWS-1252")
+  foret73=sf::st_read(paste(dir2,"/73/FORMATION_VEGETALE.shp",sep=""), options = "ENCODING=WINDOWS-1252")
+  foret26=sf::st_read(paste(dir2,"/26/FORMATION_VEGETALE.shp",sep=""), options = "ENCODING=WINDOWS-1252")
+  foret01=sf::st_read(paste(dir2,"/01/FORMATION_VEGETALE.shp",sep=""), options = "ENCODING=WINDOWS-1252")
+  foret74=sf::st_read(paste(dir2,"/74/FORMATION_VEGETALE.shp",sep=""), options = "ENCODING=WINDOWS-1252")
 
   # Crop forest layers to LiDAR survey and correct for overlapping polygons dissolving stands
   foret017374=rbind(foret01,foret73,foret74)
