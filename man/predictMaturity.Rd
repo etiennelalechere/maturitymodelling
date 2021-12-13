@@ -9,12 +9,12 @@ predictMaturity(model,modelName,dir)
 \arguments{
 \item{model}{predictive model}
 
-\item{modelName}{character used to define output name}
+\item{modelName}{character used to define output names}
 
 \item{dir}{character, directory name to load metric maps}
 }
 \description{
-Spatial prediction without filter
+Spatial prediction without filtering
 }
 \examples{
 # not run: impt.replicates.ord=maturitymodelling::predictMaturity(model=protestModel_IMAT,modelName="IMAT",dir=dir)
