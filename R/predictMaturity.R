@@ -2,7 +2,7 @@
 #' @description Spatial prediction without filtering
 #' @usage predictMaturity(model,modelName,dir)
 #' @param model predictive model
-#' @param modelName character used to define output name
+#' @param modelName character used to define output names
 #' @param dir character, directory name to load metric maps
 #' @import raster
 #' @import randomForest
