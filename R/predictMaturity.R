@@ -1,5 +1,5 @@
 #' @title Predict maturity from raw metric maps
-#' @description Spatial prediction without filter
+#' @description Spatial prediction without filtering
 #' @usage predictMaturity(model,modelName,dir)
 #' @param model predictive model
 #' @param modelName character used to define output name
