@@ -30,9 +30,9 @@ predictMaturity=function(model,modelName,dir){
 
 
   load(paste(dir,"metrics_allBugey.rda",sep=""))
-  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
+  names(metrics.map.pnr)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(protestModel_IMAT$importance)[1:(length(row.names(protestModel_IMAT$importance)))]
-  predictedIMAT_Bugey=raster::predict(metrics.map,protestModel_IMAT,progress="text",type="response")
+  predictedIMAT_Bugey=raster::predict(metrics.map.pnr,protestModel_IMAT,progress="text",type="response")
   raster::writeRaster(predictedIMAT_Bugey,filename = paste("./../data/outputs/predicted",modelName,"_Bugey.tif"),format="GTiff",prj=T,overwrite=T)
 
 
