@@ -48,9 +48,9 @@ predictMaturityExtra<-function(model,modelName,dir){
 
 
   load(paste(dir,"metrics_allBugey.rda",sep=""))
-  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
+  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]]
+  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]]
   for(i in 1:dim(metrics.map)[3]){
     if( length(
       which(
@@ -82,9 +82,9 @@ predictMaturityExtra<-function(model,modelName,dir){
 
 
   load(paste(dir,"metrics_allChartreuse.rda",sep=""))
-  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
+  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]]
+  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]]
   for(i in 1:dim(metrics.map)[3]){
     if( length(
       which(
@@ -115,9 +115,9 @@ predictMaturityExtra<-function(model,modelName,dir){
   raster::writeRaster(predictedIMAT_Chartreuse_metrics_filter,filename = paste("./../data/outputs/predicted",modelName,"_Chartreuse_metrics_extra.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
   load(paste(dir,"metrics_allVercorsRBI.rda",sep=""))
-  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
+  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]]
+  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]]
   for(i in 1:dim(metrics.map)[3]){
     if( length(
       which(
@@ -148,9 +148,9 @@ predictMaturityExtra<-function(model,modelName,dir){
   raster::writeRaster(predictedIMAT_VercorsRBI_metrics_filter,filename = paste("./../data/outputs/predicted",modelName,"_VercorsRBI_metrics_extra.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
   load(paste(dir,"metrics_allQuatreMontagnes.rda",sep=""))
-  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
+  names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]]
+  metrics.map=metrics.map[[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]]
   for(i in 1:dim(metrics.map)[3]){
     if( length(
       which(
