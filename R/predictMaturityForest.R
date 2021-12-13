@@ -1,9 +1,8 @@
-#' @title Predict maturity from raw metric maps
+#' @title Filter maturity prediction according to forest mask
 #' @description Spatial prediction with forest mask
 #' @usage predictMaturity(modelName)
 #' @param modelName character used to define output names
 #' @import raster
-#' @import randomForest
 #' @export
 #' @examples # not run: predictMaturityForest("IMAT")
 predictMaturityForest=function(modelName){

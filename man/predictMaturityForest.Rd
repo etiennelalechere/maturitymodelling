@@ -2,7 +2,7 @@
 % Please edit documentation in R/predictMaturityForest.R
 \name{predictMaturityForest}
 \alias{predictMaturityForest}
-\title{Predict maturity from raw metric maps}
+\title{Filter maturity prediction according to forest mask}
 \usage{
 predictMaturity(modelName)
 }
