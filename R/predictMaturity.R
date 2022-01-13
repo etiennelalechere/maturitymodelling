@@ -19,27 +19,27 @@ predictMaturity=function(model,modelName,dir){
   load(paste(dir,"metrics_allVercorsRBI.rda",sep=""))
   names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  predictedIMAT_VercorsRBI=raster::predict(metrics.map,protestModel_IMAT,progress="text",type="response")
+  predictedIMAT_VercorsRBI=raster::predict(metrics.map,model,progress="text",type="response")
   raster::writeRaster(predictedIMAT_VercorsRBI,filename = paste("./../data/outputs/predicted",modelName,"_VercorsRBI.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
   load(paste(dir,"metrics_allQuatreMontagnes.rda",sep=""))
   names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  predictedIMAT_QuatreMontagnes=raster::predict(metrics.map,protestModel_IMAT,progress="text",type="response")
+  predictedIMAT_QuatreMontagnes=raster::predict(metrics.map,model,progress="text",type="response")
   raster::writeRaster(predictedIMAT_QuatreMontagnes,filename = paste("./../data/outputs/predicted",modelName,"_QuatreMontagnes.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
 
   load(paste(dir,"metrics_allBugey.rda",sep=""))
   names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  predictedIMAT_Bugey=raster::predict(metrics.map,protestModel_IMAT,progress="text",type="response")
+  predictedIMAT_Bugey=raster::predict(metrics.map,model,progress="text",type="response")
   raster::writeRaster(predictedIMAT_Bugey,filename = paste("./../data/outputs/predicted",modelName,"_Bugey.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
 
   load(paste(dir,"metrics_allBauges.rda",sep=""))
   names(metrics.map.pnr)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
     row.names(model$importance)[1:(length(row.names(model$importance)))]
-  predictedIMAT_Bauges=raster::predict(metrics.map.pnr,protestModel_IMAT,progress="text",type="response")
+  predictedIMAT_Bauges=raster::predict(metrics.map.pnr,model,progress="text",type="response")
   raster::writeRaster(predictedIMAT_Bauges,filename = paste("./../data/outputs/predicted",modelName,"_Bauges.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
 }
