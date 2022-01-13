@@ -7,7 +7,7 @@
 #' @import raster
 #' @import randomForest
 #' @export
-#' @examples # not run: impt.replicates.ord=maturitymodelling::predictMaturity(model=protestModel_IMAT,modelName="IMAT",dir=dir)
+#' @examples # not run: impt.replicates.ord=maturitymodelling::predictMaturity(model=model,modelName="IMAT",dir=dir)
 predictMaturity=function(model,modelName,dir){
 
   load(paste(dir,"metrics_allChartreuse.rda",sep=""))
