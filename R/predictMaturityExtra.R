@@ -1,6 +1,7 @@
 #' @title Predict maturity from raw metric maps without any extrapolation
 #' @description Filter metrics to predict NA in case of extrapolation
 #' @usage predictMaturityExtra(model,modelName,dir)
+#' @param maturityDB.selec matrix or data frame, metrics database to define ranges
 #' @param model predictive model
 #' @param modelName character used to define output names
 #' @param dir character, directory name to load metric maps
@@ -8,10 +9,7 @@
 #' @import randomForest
 #' @export
 #' @examples # not run: predictMaturityExtra(model,modelName,dir)
-predictMaturityExtra<-function(model,modelName,dir){
-
-  maturityDB=read.table("./../data/plots/MaturityDB_17_11_2021_1_moy.csv",sep=";",h=T)
-  maturityDB.selec=maturityDB[c(19:32)]
+predictMaturityExtra<-function(maturityDB.selec,model,modelName,dir){
 
   load(paste(dir,"metrics_allBauges.rda",sep=""))
   names(metrics.map.pnr)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
