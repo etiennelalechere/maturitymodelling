@@ -2,7 +2,7 @@
 #' @description Compute conditional importance with replicates
 #' @usage stabilizeImportance(impt.init,nrep)
 #' @param response vector, pedicted variable
-#' @param impt.init output of the function varImpPlot used to include the include the "true" importance related to the initial calibrated RF model
+#' @param impt.init output of the function varImpPlot used to include the "true" importance related to the initial calibrated RF model
 #' @param nrep integer, number of replicates
 #' @return Return importance data frame
 #' @export
