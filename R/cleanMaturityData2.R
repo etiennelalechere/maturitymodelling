@@ -79,7 +79,7 @@ cleanMaturityData<-function(terrain,metrics,var.selec,var.names){
   print(which(is.na(terrain$VBMS30)==T))
 
 
-  # Combine both datasets
+  # Combine both data sets
   maturity.db=merge(terrain,metrics,by = "Placette")
 
 
