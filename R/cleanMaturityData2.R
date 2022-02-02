@@ -8,7 +8,7 @@
 #' @return Return maturity database
 #' @export
 #' @examples # Not run (tables not available in package): maturity.db=cleanMaturityData(terrain,metrics,var.selec,var.names)
-cleanMaturityData<-function(terrain,metrics,var.selec,var.names){
+cleanMaturityData2<-function(terrain,metrics,var.selec,var.names){
 
   # Optional naming of variables
   if(is.null(var.names)==T){var.names=var.selec}
