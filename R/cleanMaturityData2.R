@@ -1,5 +1,5 @@
 #' @title Clean database including Protest data
-#' @description Correct plot names, remove duplicated plots and select variables that are predefined
+#' @description Correct plot names, remove duplicated plots and select defined predictor variables
 #' @usage cleanMaturityData(terrain,metrics,var.selec,var.names)
 #' @param terrain data frame or matrix
 #' @param metrics data frame or matrix

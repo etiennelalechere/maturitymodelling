@@ -25,7 +25,7 @@ Return maturity database
 \description{
 Correct plot names, remove duplicated plots and select variables that are predefined
 
-Correct plot names, remove duplicated plots and select variables that are predefined
+Correct plot names, remove duplicated plots and select defined predictor variables
 }
 \examples{
 # Not run (tables not available in package): maturity.db=cleanMaturityData(terrain,metrics)
