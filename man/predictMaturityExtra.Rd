@@ -7,6 +7,8 @@
 predictMaturityExtra(model,modelName,dir)
 }
 \arguments{
+\item{maturityDB.selec}{matrix or data frame, metrics database to define ranges}
+
 \item{model}{predictive model}
 
 \item{modelName}{character used to define output names}

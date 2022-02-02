@@ -17,5 +17,5 @@ predictMaturity(model,modelName,dir)
 Spatial prediction without filtering
 }
 \examples{
-# not run: impt.replicates.ord=maturitymodelling::predictMaturity(model=protestModel_IMAT,modelName="IMAT",dir=dir)
+# not run: impt.replicates.ord=maturitymodelling::predictMaturity(model=model,modelName="IMAT",dir=dir)
 }

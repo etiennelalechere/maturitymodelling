@@ -9,7 +9,7 @@ stabilizeImportance(impt.init,nrep)
 \arguments{
 \item{response}{vector, pedicted variable}
 
-\item{impt.init}{output of the function varImpPlot used to include the include the "true" importance related to the initial calibrated RF model}
+\item{impt.init}{output of the function varImpPlot used to include the "true" importance related to the initial calibrated RF model}
 
 \item{nrep}{integer, number of replicates}
 }
