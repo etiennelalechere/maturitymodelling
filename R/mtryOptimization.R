@@ -17,8 +17,7 @@ mtryOptimization<-function(response,predictors,nrep,...){
   }
   rf_tuned
   tun=apply(rf_tuned[,-1],FUN=mean,MARGIN=1)
-  plot(tun~c(2,4,8),ylab="OOBError",xlab="mtry")
-  lines(tun~c(2,4,8))
+  plot(tun,ylab="OOBError",xlab="mtry")
 
   return(tun)
 
