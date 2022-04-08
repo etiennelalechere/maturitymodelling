@@ -14,11 +14,11 @@ computeMaturityIndices(maturityAttributeData,attribute.selec,quant)
 \item{quant}{quantile used as a threshold to compute IMAT.}
 }
 \value{
-Return maturity index and attributes.
+Return maturity index and attributes but only in absence of NA value
 }
 \description{
 Compute maturity indices
 }
 \examples{
-computeMaturityIndices(maturityAttributeData="terrain",attribute.selec,quant=0.99)
+computeMaturityIndices(maturityAttributeData="terrain",attribute.selec=c("GTTGB", "GBMD30", "VBMS30"),quant=0.99)
 }
