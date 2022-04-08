@@ -43,9 +43,11 @@ cleanMaturityData2<-function(terrain,metrics,var.selec,var.names){
 
 
   # Remove duplicated plots
+  print("Duplicated plots")
   terrain$Placette[duplicated(terrain$Placette)]
   # [1] "Protest_146" "LPO_7"       "Protest_91"  "Protest_161" "Protest_15"  "Protest_195" "Protest_25"
-  metrics$Placette[duplicated(metrics$Placette)]
+  print("Duplicated metrics")
+  print(metrics$Placette[duplicated(metrics$Placette)])
   # [1] "EM_1"        "EM_10"       "EM_13"       "EM_23"       "EM_29"       "EM_52"       "EM_56"       "EM_58"
   # [9] "EM_60"       "EM_84"       "EM_85"       "EM_9"        "EM_91"       "HB49"        "PR101"       "PR62"
   # [17] "PR94"        "Protest_101" "Protest_114" "Protest_137" "Protest_137" "Protest_139" "Protest_14"  "Protest_148"
