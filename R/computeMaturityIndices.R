@@ -14,11 +14,12 @@ computeMaturityIndices<-function(maturityAttributeData,attribute.selec,quant){
 
   for(i in 1:length(attribute.selec)){
 
+    indice=as.numeric(maturityAttributeData[,which(colnames(maturityAttributeData)==attribute.selec[i])])
+
     if(length(which(is.na(indice) == T)) > 0){
       print("NA value for maturity attribute")
       na.true=T
     }else{
-      indice=as.numeric(maturityAttributeData[,which(colnames(maturityAttributeData)==attribute.selec[i])])
       indice[which(indice>quantile(indice,quant))]=quantile(indice,quant)
       maturityIndices[,i]=indice
     }
