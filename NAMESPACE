@@ -3,6 +3,7 @@
 export(bootstrapCV)
 export(cleanMaturityData)
 export(cleanMaturityData2)
+export(cleanMaturityData3)
 export(combineStandExtraMasks)
 export(computeIMAT)
 export(cropForest)
