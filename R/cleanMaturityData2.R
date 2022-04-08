@@ -72,11 +72,13 @@ cleanMaturityData2<-function(terrain,metrics,var.selec,var.names){
 
   # Check for NA value for maturity attributes
   print("NA for GTTGB")
-  print(which(is.na(terrain$GTTGB)==T))
-  print("NA for GBMD")
-  print(which(is.na(terrain$GBMD30)==T))
-  print("NA for VBMS")
-  print(which(is.na(terrain$VBMS30)==T))
+  if(length(which(colnames(terrain)=="GTTGB")) == 1){print(which(is.na(terrain$GTTGB)==T))}
+  print("NA for GBMD30")
+  if(length(which(colnames(terrain)=="GBMD30")) == 1){print(which(is.na(terrain$GBMD30)==T))}
+  print("NA for VBMS30")
+  if(length(which(colnames(terrain)=="VBMS30")) == 1){print(which(is.na(terrain$VBMS30)==T))}
+  print("NA for NDBMS30")
+  if(length(which(colnames(terrain)=="NDBMS30")) == 1){print(which(is.na(terrain$NDBMS30)==T))}
 
 
   # Combine both data sets
