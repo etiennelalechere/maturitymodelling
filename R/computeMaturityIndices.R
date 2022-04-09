@@ -6,7 +6,7 @@
 #' @param quant quantile used as a threshold to compute IMAT.
 #' @return Return maturity index and attributes but only in absence of NA value
 #' @export
-#' @examples computeMaturityIndices(maturityAttributeData=terrain,attribute.selec=c("GTTGB", "GBMD30", "VBMS30"),quant=0.99)
+#' @examples # not run: computeMaturityIndices(maturityAttributeData=terrain,attribute.selec=c("GTTGB", "GBMD30", "VBMS30"),quant=0.99)
 computeMaturityIndices<-function(maturityAttributeData,attribute.selec,quant){
 
   maturityIndices=array(NA,dim = c(dim(maturityAttributeData)[1] , length(attribute.selec)))
