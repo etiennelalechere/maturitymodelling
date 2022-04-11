@@ -17,7 +17,7 @@ predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,
 
     load(paste(metricsDir,metricsDataName[i],sep=""))
     names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
-      row.names(model[[j]]$importance)[1:(length(row.names(model[[j]]$importance)))]
+      row.names(model[[1]]$importance)[1:(length(row.names(model[[1]]$importance)))]
 
     forest=sf::st_read(paste(forestDir,forestShape[i],sep=""))
     forest.selec <- forest %>%
@@ -30,7 +30,7 @@ predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,
 
     for(j in 1:length(model)){
 
-      predicted=raster::predict(metrics.map,model[[j]],progress="text",type="response")
+      predicted=raster::predict(metrics.map,model[[1]],progress="text",type="response")
 
       predicted.msk=raster::mask(predicted,forest.selec)
 
