@@ -16,7 +16,7 @@ predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,
   for(i in 1:length(metricsDataName)){
 
     load(paste(metricsDir,metricsDataName[i],sep=""))
-    names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
+    names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
       row.names(model[[j]]$importance)[1:(length(row.names(model[[j]]$importance)))]
 
     forest=sf::st_read(paste(forestDir,forestShape[i],sep=""))
@@ -34,7 +34,7 @@ predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,
 
       predicted.msk=raster::mask(predicted,forest.selec)
 
-      raster::writeRaster(predicted.msk,filename = paste(outputDir,"/",outputModelName[j],"_",strsplit(metricsDataName[i],split = ".rda")[[1]],"_stands",sep=""),format="GTiff",prj=T,overwrite=T)
+      raster::writeRaster(predicted.msk,filename = paste(outputDir,"/",outputModelName[j],"_QuatreMontagnes_stands.tif",sep=""),format="GTiff",prj=T,overwrite=T)
 
 
     }
