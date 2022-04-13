@@ -34,7 +34,8 @@ predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,
 
       predicted.msk=raster::mask(predicted,forest.selec)
 
-      raster::writeRaster(predicted.msk,filename = paste(outputDir,"/",outputModelName[j],"_QuatreMontagnes_stands.tif",sep=""),format="GTiff",prj=T,overwrite=T)
+      raster::writeRaster(predicted.msk,filename = paste(outputDir,"/",outputModelName[j],strsplit(metricsDataName[i],".rda")
+,sep=""),format="GTiff",prj=T,overwrite=T)
 
 
     }
