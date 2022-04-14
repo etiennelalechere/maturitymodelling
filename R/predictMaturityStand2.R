@@ -9,14 +9,19 @@
 #' @param forestShape character, names of forest shapefiles, must be ordered according to metricsDataName
 #' @import raster
 #' @import randomForest
+#' @import dplyr
 #' @export
 #' @examples # not run: maturitymodelling::predictMaturityStand2(model,outputModelName,metricsDir,metricsDataName,forestDir,forestShape)
 predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,forestDir,forestShape){
 
   for(i in 1:length(metricsDataName)){
 
-    load(paste(metricsDir,metricsDataName[i],sep=""))
-    names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,67,69)]=
+    if(i<5){ # Correction for Bauges dataset
+      load(paste(metricsDir,metricsDataName[i],sep=""))
+    }else{
+      metrics.map=readRDS(paste(metricsDir,metricsDataName[i],sep=""))
+    }
+    names(metrics.map)[c(1,2,3,5,39,40,53,54,55,56,60,64,66,68)]=
       row.names(model[[1]]$importance)[1:(length(row.names(model[[1]]$importance)))]
 
     forest=sf::st_read(paste(forestDir,forestShape[i],sep=""))
@@ -35,9 +40,10 @@ predictMaturityStand2=function(model,outputModelName,metricsDir,metricsDataName,
       predicted.msk=raster::mask(predicted,forest.selec)
 
       raster::writeRaster(predicted.msk,filename = paste(outputDir,"/",outputModelName[j],strsplit(metricsDataName[i],".rda")
-,sep=""),format="GTiff",prj=T,overwrite=T)
+                                                         ,sep=""),format="GTiff",prj=T,overwrite=T)
 
 
     }
   }
+
 }
