@@ -34,9 +34,9 @@ bootstrapCV=function(response,predictors,mtr,nrep,cor.method){
 
     rf.imat=randomForest(predictors[samples[1:dat70perc,i],],response[samples[1:dat70perc,i]],ntree=1000,mtrresponse=mtr)
 
-    pred.all=predict(rf.imat,newdata = predictors , tresponsepe = "response")
-    pred.train=predict(rf.imat,newdata = predictors[samples[1:dat70perc,i],] , tresponsepe = "response")
-    pred.valid=predict(rf.imat,newdata = predictors[samples[(dat70perc+1):length(response),i],] , tresponsepe = "response")
+    pred.all=predict(rf.imat,newdata = predictors , type = "response")
+    pred.train=predict(rf.imat,newdata = predictors[samples[1:dat70perc,i],] , type = "response")
+    pred.valid=predict(rf.imat,newdata = predictors[samples[(dat70perc+1):length(response),i],] , type = "response")
 
     cor.all=c(cor.all,cor(response,pred.all,method=cor.method))
     cor.train=c(cor.train,cor(response[samples[1:dat70perc,i]],pred.train))

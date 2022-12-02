@@ -9,8 +9,8 @@
 #' @return RMSEP data frame.
 #' @export
 #' @import randomForest
-#' @example bootstrapCV(response,predictors,mtr,nrep)
-bootstrapCV=function(response,predictors,mtr,nrep,cor.method){
+#' @example bootstrapCV2(response,predictors,mtr,nrep)
+bootstrapCV2=function(response,predictors,mtr,nrep,cor.method){
 
   seq.id=seq(1,dim(predictors)[1],1)
   samples=replicate(100,sample(seq.id,length(seq.id),replace = F))
