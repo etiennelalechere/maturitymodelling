@@ -40,12 +40,12 @@ bootstrapCV2=function(response,predictors,mtr,nrep,cor.method){
     pred.all=pred.all-delta.lm.oneone.all
 
     pred.train=predict(rf.imat,newdata = predictors[samples[1:dat70perc,i],] , type = "response")
-    pred.lm.train=predict(lm(pred.train[samples[1:dat70perc,i]]~response[samples[1:dat70perc,i]]), type = "response")
+    pred.lm.train=predict(lm(pred.train~response[samples[1:dat70perc,i]]), type = "response")
     delta.lm.oneone.train= pred.lm.train-response[samples[1:dat70perc,i]]
     pred.train=pred.train-delta.lm.oneone.train
 
     pred.valid=predict(rf.imat,newdata = predictors[samples[(dat70perc+1):length(response),i],] , type = "response")
-    pred.lm.valid=predict(lm(pred.valid[samples[(dat70perc+1):length(response),i]]~response[samples[(dat70perc+1):length(response),i]]), type = "response")
+    pred.lm.valid=predict(lm(pred.valid~response[samples[(dat70perc+1):length(response),i]]), type = "response")
     delta.lm.oneone.valid= pred.lm.valid-response[samples[(dat70perc+1):length(response),i]]
     pred.valid=pred.valid-delta.lm.oneone.valid
 
