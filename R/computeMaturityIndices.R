@@ -32,12 +32,12 @@ computeMaturityIndices<-function(maturityAttributeData,attribute.selec,quant){
   }
 
   # Relative index
-  maturityIndices=apply(maturityIndices, 2, function(x){x/max(x)})
+  maturityIndices2=apply(maturityIndices, 2, function(x){x/max(x)})
 
   if(na.true==T){
     maturityIndices=NULL
   }else{
-    IMAT=apply(maturityIndices, MARGIN = 1, mean)
+    IMAT=apply(maturityIndices2, MARGIN = 1, mean)
     maturityIndices=cbind(IMAT,maturityIndices)
     colnames(maturityIndices)[1]="IMAT"
   }
